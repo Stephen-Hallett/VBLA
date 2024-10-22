@@ -1,1 +1,5 @@
 .venv
+frames
+yolo*.pt
+__pycache__
+.DS_Store

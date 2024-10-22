@@ -29,7 +29,7 @@ def main() -> None:
     if all_lines_file not in [
         os.path.basename(file) for file in directory_path.glob("*.json")
     ]:
-        all_lines = [find_lines(frame, min_votes=100) for frame in tqdm(frames_orig)]
+        all_lines = [find_lines(frame, min_votes=80) for frame in tqdm(frames_orig)]
 
         with (directory_path / all_lines_file).open("w") as f:
             serialized = [
@@ -125,11 +125,6 @@ def main() -> None:
         frames_orig[center_frame_idx],
         centered_lines[center, 0],
         limit=0.05,
-    )
-
-    show_results(
-        frames_orig[center_frame_idx],
-        centered_lines[horizontal_lines + final_left + final_right + [center]],
     )
 
     horizontal_detected, vertical_detected = get_formatted_lines(
